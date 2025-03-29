@@ -42,11 +42,11 @@ if [ "$INPUT_USE_CMAKE" = true ]; then
 fi
 
 if [ -z "$INPUT_EXCLUDE_DIR" ]; then
-    files_to_check=$(python3 /src/get_files_to_check.py -dir="$GITHUB_WORKSPACE" -preselected="$preselected_files" -lang="c++")
     debug_print "Running: files_to_check=python3 /src/get_files_to_check.py -dir=\"$GITHUB_WORKSPACE\" -preselected=\"$preselected_files\" -lang=\"c++\")"
+    files_to_check=$(python3 /src/get_files_to_check.py -dir="$GITHUB_WORKSPACE" -preselected="$preselected_files" -lang="c++")
 else
-    files_to_check=$(python3 /src/get_files_to_check.py -exclude="$GITHUB_WORKSPACE/$INPUT_EXCLUDE_DIR" -dir="$GITHUB_WORKSPACE" -preselected="$preselected_files" -lang="c++")
-    debug_print "Running: files_to_check=python3 /src/get_files_to_check.py -exclude=\"$GITHUB_WORKSPACE/$INPUT_EXCLUDE_DIR\" -dir=\"$GITHUB_WORKSPACE\" -preselected=\"$preselected_files\" -lang=\"c++\")"
+    debug_print "Running: files_to_check=python3 /src/get_files_to_check.py -exclude=\"$INPUT_EXCLUDE_DIR\" -dir=\"$GITHUB_WORKSPACE\" -preselected=\"$preselected_files\" -lang=\"c++\")"
+    files_to_check=$(python3 /src/get_files_to_check.py -exclude="$INPUT_EXCLUDE_DIR" -dir="$GITHUB_WORKSPACE" -preselected="$preselected_files" -lang="c++")
 fi
 
 debug_print "FLAWFINDER_ARGS = $FLAWFINDER_ARGS"
@@ -62,44 +62,54 @@ if [ -z "$files_to_check" ]; then
     echo "No files to check"
 
 else
+    cpp_files_to_check=""
+    for file in $files_to_check; do
+        file_extension="${file##*.}"
+        if [[ "${file_extension,,}" =~ (c(c|p(pm?)?|\+\+)?|(c|i)xx) ]]; then
+            if [ -z "${cpp_files_to_check}" ]; then
+                cpp_files_to_check="$file"
+            else
+                cpp_files_to_check="$cpp_files_to_check $file"
+            fi
+        fi
+    done
+
+    debug_print "CPPCheck will check the following files: $cpp_files_to_check"
+
     for ffdir in $FLAWFINDER_TGTS; do
         dir_name=$(echo "$ffdir" | tr '/' '_')
 
-        debug_print "Running flawfinder $FLAWFINDER_ARGS for files in /$GITHUB_WORKSPACE/$ffdir..."
-        eval flawfinder "$FLAWFINDER_ARGS" "/$GITHUB_WORKSPACE/$ffdir" >>"flawfinder_$dir_name.txt" 2>&1 || true
+        debug_print "Running flawfinder $FLAWFINDER_ARGS --sarif for files in /$GITHUB_WORKSPACE/$ffdir..."
+        eval flawfinder "$FLAWFINDER_ARGS" --sarif "/$GITHUB_WORKSPACE/$ffdir" > "flawfinder_$dir_name.sarif" 2>&1 || true
     done
 
-    cat flawfinder_*.txt > flawfinder.txt
+    debug_print "Aggregating flawfinder results into $WS_BASE/flawfinder.sarif..."
+    python3 -m src.join_sarif --files "$(ls flawfinder_*.sarif)" --output "$WS_BASE/flawfinder.sarif"
 
     if [ "$INPUT_USE_CMAKE" = true ]; then
-        for file in $files_to_check; do
-            exclude_arg=""
-            if [ -n "$INPUT_EXCLUDE_DIR" ]; then
-                exclude_arg="-i$GITHUB_WORKSPACE/$INPUT_EXCLUDE_DIR"
-            fi
-
-            # Replace '/' with '_'
+        for file in $cpp_files_to_check; do
             file_name=$(echo "$file" | tr '/' '_')
 
-            debug_print "Running cppcheck --project=compile_commands.json $CPPCHECK_ARGS --file-filter=$file --output-file=cppcheck_$file_name.txt $exclude_arg"
-            eval cppcheck --project=compile_commands.json "$CPPCHECK_ARGS" --file-filter="$file" --output-file="cppcheck_$file_name.txt" "$exclude_arg" || true
+            debug_print "Running cppcheck --project=compile_commands.json $CPPCHECK_ARGS --file-filter=$file --output-format=sarif --output-file=cppcheck_$file_name.sarif"
+            eval cppcheck --project=compile_commands.json "$CPPCHECK_ARGS" --file-filter="$file" --output-format=sarif --output-file="cppcheck_$file_name.sarif" || true
         done
 
-        cat cppcheck_*.txt > cppcheck.txt
+        debug_print "Aggregating cppcheck results into $WS_BASE/cppcheck.sarif..."
+        python3 -m src.join_sarif --files "$(ls cppcheck_*.sarif)" --output "$WS_BASE/cppcheck.sarif"
 
-        debug_print "Running infer run --no-progress-bar --compilation-database compile_commands.json $INFER_ARGS..."
-        eval infer run --no-progress-bar --compilation-database compile_commands.json "$INFER_ARGS" || true
+        debug_print "Running infer run --no-progress-bar --compilation-database compile_commands.json $INFER_ARGS --sarif..."
+        eval infer run --no-progress-bar --compilation-database compile_commands.json "$INFER_ARGS" --sarif || true
 
         # Excludes for clang-tidy are handled in python script
         debug_print "Running run-clang-tidy-19 $CLANG_TIDY_ARGS -p $(pwd) $files_to_check >>clang_tidy.txt 2>&1"
         eval run-clang-tidy-19 "$CLANG_TIDY_ARGS" -p "$(pwd)" "$files_to_check" >clang_tidy.txt 2>&1 || true
 
     else
-        debug_print "Running cppcheck $files_to_check $CPPCHECK_ARGS --output-file=cppcheck.txt ..."
-        eval cppcheck "$files_to_check" "$CPPCHECK_ARGS" --output-file=cppcheck.txt || true
+        debug_print "Running cppcheck $cpp_files_to_check $CPPCHECK_ARGS --output-format=sarif --output-file=cppcheck.sarif ..."
+        eval cppcheck "$cpp_files_to_check" "$CPPCHECK_ARGS" --output-format=sarif --output-file=cppcheck.sarif || true
 
-        debug_print "Running infer run --no-progress-bar $INFER_ARGS..."
-        eval infer run --no-progress-bar "$INFER_ARGS" || true
+        debug_print "Running infer run --no-progress-bar --sarif $INFER_ARGS..."
+        eval infer run --no-progress-bar --sarif "$INFER_ARGS" || true
 
         debug_print "Running run-clang-tidy-19 $CLANG_TIDY_ARGS $files_to_check >>clang_tidy.txt 2>&1"
         eval run-clang-tidy-19 "$CLANG_TIDY_ARGS" "$files_to_check" >clang_tidy.txt 2>&1 || true
@@ -107,5 +117,5 @@ else
 
     cd /
 
-    python3 -m src.static_analysis_cpp -ff "$WS_BASE/flawfinder.txt" -cc "$WS_BASE/cppcheck.txt" -fi "$WS_INFER/report.json" -ct "$WS_BASE/clang_tidy.txt" -o "$print_to_console" -fk "$use_extra_directory" --common "$common_ancestor" --head "origin/$GITHUB_HEAD_REF"
+    python3 -m src.static_analysis_cpp -ff "$WS_BASE/flawfinder.sarif" -cc "$WS_BASE/cppcheck.sarif" -fi "$WS_INFER/report.sarif" -ct "$WS_BASE/clang_tidy.txt" -o "$print_to_console" -fk "$use_extra_directory" --common "$common_ancestor" --head "origin/$GITHUB_HEAD_REF"
 fi

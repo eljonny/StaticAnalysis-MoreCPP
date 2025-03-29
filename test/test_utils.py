@@ -11,7 +11,6 @@ except Exception as exception:
 
 from src import sa_utils
 
-
 class TestUtils(unittest.TestCase):
     """Unit tests for utils_sa module"""
 

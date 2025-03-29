@@ -32,7 +32,7 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
 # Install Python packages
-RUN pip3 install --break-system-packages PyGithub pylint
+RUN pip3 install --break-system-packages PyGithub pylint sarif-om
 
 # Create symlinks for clang and clang++
 RUN ln -s "$(which clang++-$CLANG_VERSION)" /usr/bin/clang++
