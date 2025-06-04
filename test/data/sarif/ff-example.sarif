@@ -1,0 +1,102 @@
+{
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Flawfinder",
+          "version": "2.0.19",
+          "informationUri": "https://dwheeler.com/flawfinder/",
+          "rules": [
+            {
+              "id": "FF1013",
+              "name": "buffer/char",
+              "shortDescription": {
+                "text": "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120)."
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/119.html",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CWE-119",
+                    "toolComponent": {
+                      "name": "CWE",
+                      "guid": "FFC64C90-42B6-44CE-8BEB-F6B7DAE649E5"
+                    }
+                  },
+                  "kinds": [
+                    "incomparable"
+                  ]
+                },
+                {
+                  "target": {
+                    "id": "CWE-120",
+                    "toolComponent": {
+                      "name": "CWE",
+                      "guid": "FFC64C90-42B6-44CE-8BEB-F6B7DAE649E5"
+                    }
+                  },
+                  "kinds": [
+                    "relevant"
+                  ]
+                }
+              ]
+            }
+          ],
+          "supportedTaxonomies": [
+            {
+              "name": "CWE",
+              "guid": "FFC64C90-42B6-44CE-8BEB-F6B7DAE649E5"
+            }
+          ]
+        }
+      },
+      "columnKind": "utf16CodeUnits",
+      "results": [
+        {
+          "ruleId": "FF1013",
+          "level": "note",
+          "message": {
+            "text": "buffer/char:Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include/internal/TestCPPUtil.h",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 33,
+                  "endColumn": 54,
+                  "snippet": {
+                    "text": "            alignas(T) unsigned char data[sizeof(T)];"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "contextHash/v1": "ef5b18490d0e1f5791c730ded175b6ec23adf7ef7dcba962fd7e0ef5bc5e920a"
+          },
+          "rank": 0.4
+        }
+      ],
+      "externalPropertyFileReferences": {
+        "taxonomies": [
+          {
+            "location": {
+              "uri": "https://raw.githubusercontent.com/sarif-standard/taxonomies/main/CWE_v4.4.sarif"
+            },
+            "guid": "FFC64C90-42B6-44CE-8BEB-F6B7DAE649E5"
+          }
+        ]
+      }
+    }
+  ]
+}

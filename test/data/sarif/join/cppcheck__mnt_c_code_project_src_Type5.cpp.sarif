@@ -1,0 +1,70 @@
+{
+  "$schema": "https:\/\/docs.oasis-open.org\/sarif\/sarif\/v2.1.0\/errata01\/os\/schemas\/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type5.cpp"
+                },
+                "region": {
+                  "endColumn": 32,
+                  "endLine": 59,
+                  "startColumn": 32,
+                  "startLine": 59
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type5.h"
+                },
+                "region": {
+                  "endColumn": 23,
+                  "endLine": 81,
+                  "startColumn": 23,
+                  "startLine": 81
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'project::Type6::fn1' can be const."
+          },
+          "ruleId": "functionConst"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "informationUri": "https:\/\/cppcheck.sourceforge.io",
+          "name": "Cppcheck",
+          "rules": [
+            {
+              "fullDescription": {
+                "text": "The member function 'project::Type6::fn1' can be made a const function. Making this function 'const' should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?"
+              },
+              "help": {
+                "text": "The member function 'project::Type6::fn1' can be made a const function. Making this function 'const' should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?"
+              },
+              "id": "functionConst",
+              "properties": {
+                "precision": "medium"
+              },
+              "shortDescription": {
+                "text": "Technically the member function 'project::Type6::fn1' can be const."
+              }
+            }
+          ],
+          "semanticVersion": "2.18"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}
+

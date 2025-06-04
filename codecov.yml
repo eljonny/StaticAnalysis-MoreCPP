@@ -1,0 +1,6 @@
+ignore:
+  - "local/**"
+  - "test/test_*.py"
+  - "docker/**"
+  - ".github/**"
+  - ".pytest_cache/**"

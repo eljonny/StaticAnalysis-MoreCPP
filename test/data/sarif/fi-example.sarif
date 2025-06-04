@@ -1,0 +1,888 @@
+{
+    "$schema": "http://json.schemastore.org/sarif-2.1.0-rtm.5",
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "Infer",
+                    "informationUri": "https://github.com/facebook/infer",
+                    "version": "1.2.0",
+                    "rules": [
+                        {
+                            "id": "PULSE_UNNECESSARY_COPY_ASSIGNMENT_MOVABLE",
+                            "shortDescription": {
+                                "text": "Unnecessary Copy Assignment Movable"
+                            },
+                            "helpUri": "https://fbinfer.com/docs/next/all-issue-types#pulse_unnecessary_copy_assignment_movable"
+                        },
+                        {
+                            "id": "PULSE_CONST_REFABLE",
+                            "shortDescription": {
+                                "text": "Const Refable Parameter"
+                            },
+                            "helpUri": "https://fbinfer.com/docs/next/all-issue-types#pulse_const_refable"
+                        },
+                        {
+                            "id": "USE_AFTER_DELETE",
+                            "shortDescription": {
+                                "text": "Use After Delete"
+                            },
+                            "helpUri": "https://fbinfer.com/docs/next/all-issue-types#use_after_delete"
+                        },
+                        {
+                            "id": "PULSE_UNNECESSARY_COPY_ASSIGNMENT",
+                            "shortDescription": {
+                                "text": "Unnecessary Copy Assignment"
+                            },
+                            "helpUri": "https://fbinfer.com/docs/next/all-issue-types#pulse_unnecessary_copy_assignment"
+                        }
+                    ]
+                }
+            },
+            "results": [
+                {
+                    "message": {
+                        "text": "Function parameter `func` is passed by-value but not modified inside this function, resulting in a potential unnecessary copy at the function's callsites. Change the type of the parameter to `const &`."
+                    },
+                    "level": "error",
+                    "ruleId": "PULSE_CONST_REFABLE",
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "nestingLevel": 0,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:include/internal/TestCPPTestCase.h",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/include/internal/TestCPPTestCase.h"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 345,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "Parameter func with type `std::function<_fn_>`"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "file:include/internal/TestCPPTestCase.h",
+                                    "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/include/internal/TestCPPTestCase.h"
+                                },
+                                "region": {
+                                    "startLine": 345,
+                                    "startColumn": 9
+                                }
+                            }
+                        }
+                    ],
+                    "fingerprints": {
+                        "hash/v1": "ce82b7ba7661167341bb2251cf82d2ae",
+                        "key": "TestCPPTestCase.h|duration<std::function<void_(void)>_>|PULSE_CONST_REFABLE"
+                    }
+                },
+                {
+                    "message": {
+                        "text": "Function parameter `shouldNotThrow` is passed by-value but not modified inside this function, resulting in a potential unnecessary copy at the function's callsites. Change the type of the parameter to `const &`."
+                    },
+                    "level": "error",
+                    "ruleId": "PULSE_CONST_REFABLE",
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "nestingLevel": 0,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPAssertions.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPAssertions.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 136,
+                                                        "startColumn": 5
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "Parameter shouldNotThrow with type `std::function<_fn_>`"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "file:src/TestCPPAssertions.cpp",
+                                    "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPAssertions.cpp"
+                                },
+                                "region": {
+                                    "startLine": 136,
+                                    "startColumn": 5
+                                }
+                            }
+                        }
+                    ],
+                    "fingerprints": {
+                        "hash/v1": "eaa17da93f34d6f8ed47c66db7882399",
+                        "key": "TestCPPAssertions.cpp|assertNoThrows|PULSE_CONST_REFABLE"
+                    }
+                },
+                {
+                    "message": {
+                        "text": "`testFn` is copy assigned into field `test` but is not modified afterwards. Rather than copying into the field, move into it instead."
+                    },
+                    "level": "error",
+                    "ruleId": "PULSE_UNNECESSARY_COPY_ASSIGNMENT",
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "nestingLevel": 0,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 122,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "copy assigned here (with type `std::function<_fn_>&`)"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "file:src/TestCPPTestCase.cpp",
+                                    "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                },
+                                "region": {
+                                    "startLine": 122,
+                                    "startColumn": 9
+                                }
+                            }
+                        }
+                    ],
+                    "fingerprints": {
+                        "hash/v1": "b787e827e8dd0832f56f127b2fbd8cde",
+                        "key": "TestCPPTestCase.cpp|TestCase|PULSE_UNNECESSARY_COPY_ASSIGNMENT"
+                    }
+                },
+                {
+                    "message": {
+                        "text": "`name` is copy assigned into field `testName` but is not modified afterwards. Rather than copying into the field, move into it instead."
+                    },
+                    "level": "error",
+                    "ruleId": "PULSE_UNNECESSARY_COPY_ASSIGNMENT_MOVABLE",
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "nestingLevel": 0,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 124,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "copy assigned here (with type `TestCPP::TestObjName&&`)"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "file:src/TestCPPTestCase.cpp",
+                                    "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                },
+                                "region": {
+                                    "startLine": 124,
+                                    "startColumn": 9
+                                }
+                            }
+                        }
+                    ],
+                    "fingerprints": {
+                        "hash/v1": "52f9f9e4330352c605e3a05044586b78",
+                        "key": "TestCPPTestCase.cpp|TestCase|PULSE_UNNECESSARY_COPY_ASSIGNMENT_MOVABLE"
+                    }
+                },
+                {
+                    "message": {
+                        "text": "call to `std::unique_ptr::operator=()` eventually accesses `TestCPP::Util::no_destroy::get().__infer_backing_pointer` that was invalidated by `delete` on line 203."
+                    },
+                    "level": "error",
+                    "ruleId": "USE_AFTER_DELETE",
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "nestingLevel": 0,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 197,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "invalidation part of the trace starts here"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 197,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "global variable `TestCPP::TestCase::stdoutBuffer` accessed here"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 197,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "in call to `TestCPP::Util::no_destroy<std::unique_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>,_fn_(*)>>::get`"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 2,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:include/internal/TestCPPUtil.h",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/include/internal/TestCPPUtil.h"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 111,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "parameter `this` of TestCPP::Util::no_destroy<std::unique_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>,_fn_(*)>>::get"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 2,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:include/internal/TestCPPUtil.h",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/include/internal/TestCPPUtil.h"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 111,
+                                                        "startColumn": 24
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "returned"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 197,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "return from call to `TestCPP::Util::no_destroy<std::unique_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>,_fn_(*)>>::get`"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 197,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "in call to `std::operator!=<533d66becc097987>`"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 2,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:/usr/include/c++/13/bits/unique_ptr.h",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/usr/include/c++/13/bits/unique_ptr.h"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 860,
+                                                        "startColumn": 5
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "parameter `__x` of std::operator!=<533d66becc097987>"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 2,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:/usr/include/c++/13/bits/unique_ptr.h",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/usr/include/c++/13/bits/unique_ptr.h"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 862,
+                                                        "startColumn": 20
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "in call to `std::unique_ptr::operator_bool()` (modelled)"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 2,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:/usr/include/c++/13/bits/unique_ptr.h",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/usr/include/c++/13/bits/unique_ptr.h"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 862,
+                                                        "startColumn": 7
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "returned"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 197,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "return from call to `std::operator!=<533d66becc097987>`"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 197,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "taking \"then\" branch"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 199,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "global variable `TestCPP::TestCase::stdoutCaptureCasesDestroyed` accessed here"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 199,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "in call to `std::atomic<T>::operator_T()` (modelled)"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 200,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "global variable `TestCPP::TestCase::stdoutCaptureCasesConstructed` accessed here"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 200,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "in call to `std::atomic<T>::operator_T()` (modelled)"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 199,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "is assigned to the constant 1"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 199,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "taking \"then\" branch"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 203,
+                                                        "startColumn": 24
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "in call to `std::unique_ptr::get()` (modelled)"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 203,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "was invalidated by `delete`"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 0,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 197,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "use-after-lifetime part of the trace starts here"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 197,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "global variable `TestCPP::TestCase::stdoutBuffer` accessed here"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 197,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "in call to `TestCPP::Util::no_destroy<std::unique_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>,_fn_(*)>>::get`"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 2,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:include/internal/TestCPPUtil.h",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/include/internal/TestCPPUtil.h"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 111,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "parameter `this` of TestCPP::Util::no_destroy<std::unique_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>,_fn_(*)>>::get"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 2,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:include/internal/TestCPPUtil.h",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/include/internal/TestCPPUtil.h"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 111,
+                                                        "startColumn": 24
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "returned"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 197,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "return from call to `TestCPP::Util::no_destroy<std::unique_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>,_fn_(*)>>::get`"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 197,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "in call to `std::operator!=<533d66becc097987>`"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 2,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:/usr/include/c++/13/bits/unique_ptr.h",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/usr/include/c++/13/bits/unique_ptr.h"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 860,
+                                                        "startColumn": 5
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "parameter `__x` of std::operator!=<533d66becc097987>"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 197,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "return from call to `std::operator!=<533d66becc097987>`"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 1,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:src/TestCPPTestCase.cpp",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 204,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "when calling `std::unique_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>,_fn_(*)>::operator=` here"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 2,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:/usr/include/c++/13/bits/unique_ptr.h",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/usr/include/c++/13/bits/unique_ptr.h"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 439,
+                                                        "startColumn": 7
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "parameter `this` of std::unique_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>,_fn_(*)>::operator="
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 2,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:/usr/include/c++/13/bits/unique_ptr.h",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/usr/include/c++/13/bits/unique_ptr.h"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 442,
+                                                        "startColumn": 2
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "in call to `std::unique_ptr::reset(T*)` (modelled)"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "nestingLevel": 2,
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "file:/usr/include/c++/13/bits/unique_ptr.h",
+                                                        "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/usr/include/c++/13/bits/unique_ptr.h"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 442,
+                                                        "startColumn": 2
+                                                    }
+                                                },
+                                                "message": {
+                                                    "text": "invalid access occurs here"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "file:src/TestCPPTestCase.cpp",
+                                    "uriBaseId": "/mnt/c/Users/jonat/Code/TestCPP/src/TestCPPTestCase.cpp"
+                                },
+                                "region": {
+                                    "startLine": 204,
+                                    "startColumn": 17
+                                }
+                            }
+                        }
+                    ],
+                    "fingerprints": {
+                        "hash/v1": "7a09e3db5fda863aff928a8b56e14543",
+                        "key": "TestCPPTestCase.cpp|__infer_inner_destructor_~TestCase|USE_AFTER_DELETE"
+                    }
+                }
+            ]
+        }
+    ]
+}

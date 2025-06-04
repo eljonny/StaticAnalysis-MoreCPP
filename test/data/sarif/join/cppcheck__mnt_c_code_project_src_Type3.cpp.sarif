@@ -1,0 +1,649 @@
+{
+  "$schema": "https:\/\/docs.oasis-open.org\/sarif\/sarif\/v2.1.0\/errata01\/os\/schemas\/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 461,
+                  "startColumn": 20,
+                  "startLine": 461
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type3.h"
+                },
+                "region": {
+                  "endColumn": 14,
+                  "endLine": 199,
+                  "startColumn": 14,
+                  "startLine": 199
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'project::Type3::fn1' can be static (but you may consider moving to unnamed namespace)."
+          },
+          "ruleId": "functionStatic"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 467,
+                  "startColumn": 20,
+                  "startLine": 467
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type3.h"
+                },
+                "region": {
+                  "endColumn": 14,
+                  "endLine": 207,
+                  "startColumn": 14,
+                  "startLine": 207
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'project::Type3::fn2' can be static (but you may consider moving to unnamed namespace)."
+          },
+          "ruleId": "functionStatic"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 473,
+                  "startColumn": 20,
+                  "startLine": 473
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type3.h"
+                },
+                "region": {
+                  "endColumn": 14,
+                  "endLine": 215,
+                  "startColumn": 14,
+                  "startLine": 215
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'project::Type3::fn3' can be static (but you may consider moving to unnamed namespace)."
+          },
+          "ruleId": "functionStatic"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 292,
+                  "startColumn": 20,
+                  "startLine": 292
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type3.h"
+                },
+                "region": {
+                  "endColumn": 14,
+                  "endLine": 292,
+                  "startColumn": 14,
+                  "startLine": 292
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'project::Type3::fn4' can be const."
+          },
+          "ruleId": "functionConst"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 15,
+                  "endLine": 171,
+                  "startColumn": 15,
+                  "startLine": 171
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Exception thrown in function declared not to throw exceptions."
+          },
+          "ruleId": "throwInNoexceptFunction"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 15,
+                  "endLine": 262,
+                  "startColumn": 15,
+                  "startLine": 262
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Exception thrown in function declared not to throw exceptions."
+          },
+          "ruleId": "throwInNoexceptFunction"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type3.h"
+                },
+                "region": {
+                  "endColumn": 27,
+                  "endLine": 132,
+                  "startColumn": 27,
+                  "startLine": 132
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 39,
+                  "endLine": 114,
+                  "startColumn": 39,
+                  "startLine": 114
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function 'Type3' argument 1 names different: declaration 'arg1decl' definition 'arg1def'."
+          },
+          "ruleId": "funcArgNamesDifferent"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type3.h"
+                },
+                "region": {
+                  "endColumn": 30,
+                  "endLine": 133,
+                  "startColumn": 30,
+                  "startLine": 133
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 42,
+                  "endLine": 115,
+                  "startColumn": 42,
+                  "startLine": 115
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function 'Type3' argument 2 names different: declaration 'arg2decl' definition 'arg2def'."
+          },
+          "ruleId": "funcArgNamesDifferent"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type3.h"
+                },
+                "region": {
+                  "endColumn": 18,
+                  "endLine": 134,
+                  "startColumn": 18,
+                  "startLine": 134
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 30,
+                  "endLine": 116,
+                  "startColumn": 30,
+                  "startLine": 116
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function 'Type3' argument 3 names different: declaration 'arg3decl' definition 'arg3def'."
+          },
+          "ruleId": "funcArgNamesDifferent"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type3.h"
+                },
+                "region": {
+                  "endColumn": 37,
+                  "endLine": 299,
+                  "startColumn": 37,
+                  "startLine": 299
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 43,
+                  "endLine": 304,
+                  "startColumn": 43,
+                  "startLine": 304
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function 'fn5' argument 1 names different: declaration 'fn5arg1decl' definition 'fn5arg1def'."
+          },
+          "ruleId": "funcArgNamesDifferent"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type3.h"
+                },
+                "region": {
+                  "endColumn": 36,
+                  "endLine": 180,
+                  "startColumn": 36,
+                  "startLine": 180
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 42,
+                  "endLine": 371,
+                  "startColumn": 42,
+                  "startLine": 371
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function 'fn6' argument 1 names different: declaration 'fn6arg1decl' definition 'fn6arg1def'."
+          },
+          "ruleId": "funcArgNamesDifferent"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 40,
+                  "endLine": 479,
+                  "startColumn": 40,
+                  "startLine": 479
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'fnArg1NonConst' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 37,
+                  "endLine": 484,
+                  "startColumn": 37,
+                  "startLine": 484
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'fnArg1NonConst' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 40,
+                  "endLine": 489,
+                  "startColumn": 40,
+                  "startLine": 489
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'fnArg1NonConst' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 40,
+                  "endLine": 494,
+                  "startColumn": 40,
+                  "startLine": 494
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'fnArg2NonConst' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 55,
+                  "endLine": 494,
+                  "startColumn": 55,
+                  "startLine": 494
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'fnArg1NonConst' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 35,
+                  "endLine": 145,
+                  "startColumn": 35,
+                  "startLine": 145
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Parameter 'fnArg3NonConst' can be declared as reference to const"
+          },
+          "ruleId": "constParameterReference"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 46,
+                  "endLine": 234,
+                  "startColumn": 46,
+                  "startLine": 234
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Parameter 'rhs' can be declared as reference to const"
+          },
+          "ruleId": "constParameterReference"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type3.cpp"
+                },
+                "region": {
+                  "endColumn": 53,
+                  "endLine": 292,
+                  "startColumn": 53,
+                  "startLine": 292
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Parameter 'fn5arg1def' can be declared as reference to const"
+          },
+          "ruleId": "constParameterReference"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "informationUri": "https:\/\/cppcheck.sourceforge.io",
+          "name": "Cppcheck",
+          "rules": [
+            {
+              "fullDescription": {
+                "text": "The member function 'project::Type3::fn1' can be made a static function. Making a function static can bring a performance benefit since no 'this' instance is passed to the function. This change should not cause compiler errors but it does not necessarily make sense conceptually. Think about your design and the task of the function first - is it a function that must not access members of class instances? And maybe it is more appropriate to move this function to an unnamed namespace."
+              },
+              "help": {
+                "text": "The member function 'project::Type3::fn1' can be made a static function. Making a function static can bring a performance benefit since no 'this' instance is passed to the function. This change should not cause compiler errors but it does not necessarily make sense conceptually. Think about your design and the task of the function first - is it a function that must not access members of class instances? And maybe it is more appropriate to move this function to an unnamed namespace."
+              },
+              "id": "functionStatic",
+              "properties": {
+                "precision": "medium"
+              },
+              "shortDescription": {
+                "text": "Technically the member function 'project::Type3::fn1' can be static (but you may consider moving to unnamed namespace)."
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "The member function 'project::Type3::fn4' can be made a const function. Making this function 'const' should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?"
+              },
+              "help": {
+                "text": "The member function 'project::Type3::fn4' can be made a const function. Making this function 'const' should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?"
+              },
+              "id": "functionConst",
+              "properties": {
+                "precision": "medium"
+              },
+              "shortDescription": {
+                "text": "Technically the member function 'project::Type3::fn4' can be const."
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "Exception thrown in function declared not to throw exceptions."
+              },
+              "help": {
+                "text": "Exception thrown in function declared not to throw exceptions."
+              },
+              "id": "throwInNoexceptFunction",
+              "properties": {
+                "precision": "high",
+                "security-severity": 9.9000000000000004,
+                "tags": [
+                  "security"
+                ]
+              },
+              "shortDescription": {
+                "text": "Exception thrown in function declared not to throw exceptions."
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "Function 'Type3' argument 1 names different: declaration 'arg1decl' definition 'arg1def'."
+              },
+              "help": {
+                "text": "Function 'Type3' argument 1 names different: declaration 'arg1decl' definition 'arg1def'."
+              },
+              "id": "funcArgNamesDifferent",
+              "properties": {
+                "precision": "medium"
+              },
+              "shortDescription": {
+                "text": "Function 'Type3' argument 1 names different: declaration 'arg1decl' definition 'arg1def'."
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "Parameter 'fnArg1NonConst' is passed by value. It could be passed as a const reference which is usually faster and recommended in C++."
+              },
+              "help": {
+                "text": "Parameter 'fnArg1NonConst' is passed by value. It could be passed as a const reference which is usually faster and recommended in C++."
+              },
+              "id": "passedByValue",
+              "properties": {
+                "precision": "high"
+              },
+              "shortDescription": {
+                "text": "Function parameter 'fnArg1NonConst' should be passed by const reference."
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "Parameter 'fnArg3NonConst' can be declared as reference to const"
+              },
+              "help": {
+                "text": "Parameter 'fnArg3NonConst' can be declared as reference to const"
+              },
+              "id": "constParameterReference",
+              "properties": {
+                "precision": "high"
+              },
+              "shortDescription": {
+                "text": "Parameter 'fnArg3NonConst' can be declared as reference to const"
+              }
+            }
+          ],
+          "semanticVersion": "2.18"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}
+

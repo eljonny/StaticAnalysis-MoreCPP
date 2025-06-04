@@ -1,16 +1,24 @@
-[![Linter](https://github.com/JacobDomagala/StaticAnalysis/actions/workflows/linter.yml/badge.svg?branch=main)](https://github.com/JacobDomagala/StaticAnalysis/actions/workflows/linter.yml?query=branch%3Amain)
-[![Test Action](https://github.com/JacobDomagala/StaticAnalysis/actions/workflows/test_action.yml/badge.svg?branch=main)](https://github.com/JacobDomagala/StaticAnalysis/actions/workflows/test_action.yml?query=branch%3Amain)
-[![Unit Tests](https://github.com/JacobDomagala/StaticAnalysis/actions/workflows/unit_tests.yml/badge.svg?branch=main)](https://github.com/JacobDomagala/StaticAnalysis/actions/workflows/unit_tests.yml?query=branch%3Amain)
+[![Linter](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/linter.yml/badge.svg)](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/linter.yml)
+[![Test Action](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/test_action.yml/badge.svg)](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/test_action.yml)
+[![Unit Tests](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/unit_tests.yml)
+[![Shell Script Check](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/shellcheck.yml)
+[![Code Coverage](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/coverage.yml/badge.svg)](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/coverage.yml)
+[![codecov](https://codecov.io/gh/eljonny/StaticAnalysis-MoreCPP/graph/badge.svg?token=QJZvQ3D9aK)](https://codecov.io/gh/eljonny/StaticAnalysis-MoreCPP)
 
 # Static Analysis
 
 This GitHub action is designed for C++/Python projects and performs static analysis using:
-- [cppcheck](http://cppcheck.sourceforge.net/) and [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) for C++
-- [pylint](https://pylint.readthedocs.io/en/latest/index.html) for Python
+- For C++:
+  - [cppcheck](https://github.com/danmar/cppcheck) Main page [here](http://cppcheck.sourceforge.net/)
+  - [clang-tidy](https://github.com/llvm/llvm-project/tree/main/clang-tools-extra/clang-tidy) Main page [here](https://clang.llvm.org/extra/clang-tidy/)
+  - [fbinfer](https://github.com/facebook/infer) Main page [here](https://fbinfer.com/)
+  - [flawfinder](http://sourceforge.net/projects/flawfinder/) Main page [here](https://dwheeler.com/flawfinder/)
+- For Python
+  - [pylint](https://github.com/pylint-dev/pylint) Main page [here](https://pylint.readthedocs.io/en/latest/index.html)
 
 It can be triggered by push and pull requests.
 
-For further information and guidance about setup and various inputs, please see sections dedicated to each language ([**C++**](https://github.com/JacobDomagala/StaticAnalysis?tab=readme-ov-file#c) and [**Python**](https://github.com/JacobDomagala/StaticAnalysis?tab=readme-ov-file#python))
+For further information and guidance about setup and various inputs, please see sections dedicated to each language ([**C++**](https://github.com/eljonny/StaticAnalysis-MoreCPP?tab=readme-ov-file#c) and [**Python**](https://github.com/eljonny/StaticAnalysis-MoreCPP?tab=readme-ov-file#python))
 
 ## Pull Request comment
 
@@ -32,7 +40,7 @@ For non Pull Requests, the output will be printed to GitHub's output console. Th
 <br><br>
 
 # C++
-While it's recommended that your project is CMake-based, it's not required (see the [**Inputs**](https://github.com/JacobDomagala/StaticAnalysis#inputs) section below). We also recommend using a ```.clang-tidy``` file in your root directory. If your project requires additional packages to be installed, you can use the `apt_pckgs` and/or `init_script` input variables to install them (see the [**Workflow example**](https://github.com/JacobDomagala/StaticAnalysis#workflow-example) or [**Inputs**](https://github.com/JacobDomagala/StaticAnalysis#inputs) sections below). If your repository allows contributions from forks, you must use this Action with the `pull_request_target` trigger event, as the GitHub API won't allow PR comments otherwise.
+While it's recommended that your project is CMake-based, it's not required (see the [**Inputs**](https://github.com/eljonny/StaticAnalysis-MoreCPP#inputs) section below). We also recommend using a ```.clang-tidy``` file in your root directory. If your project requires additional packages to be installed, you can use the `apt_pckgs` and/or `init_script` input variables to install them (see the [**Workflow example**](https://github.com/eljonny/StaticAnalysis-MoreCPP#workflow-example) or [**Inputs**](https://github.com/eljonny/StaticAnalysis-MoreCPP#inputs) sections below). If your repository allows contributions from forks, you must use this Action with the `pull_request_target` trigger event, as the GitHub API won't allow PR comments otherwise.
 
 By default, **cppcheck** runs with the following flags:
 ```--enable=all --suppress=missingIncludeSystem --inline-suppr --inconclusive```
@@ -51,7 +59,6 @@ on:
   push:
     branches:
       - develop
-      - main
       - main
 
   # 'pull_request_target' allows this Action to also run on forked repositories
@@ -72,7 +79,7 @@ jobs:
       run: |
         echo "#!/bin/bash
 
-        # Input args provided by StaticAnalysis action
+        # Input args provided by StaticAnalysis-MoreCPP action
         root_dir=\${1}
         build_dir=\${2}
         echo \"Hello from the init script! First arg=\${root_dir} second arg=\${build_dir}\"
@@ -82,7 +89,7 @@ jobs:
         apt install -y libvulkan1 mesa-vulkan-drivers vulkan-utils" > init_script.sh
 
     - name: Run static analysis
-      uses: JacobDomagala/StaticAnalysis@main
+      uses: eljonny/StaticAnalysis-MoreCPP@morecpp-latest
       with:
         language: c++
 
@@ -102,24 +109,36 @@ jobs:
 
         # (Optional) cppcheck args
         cppcheck_args: --enable=all --suppress=missingIncludeSystem
+
+        # (Optional) infer args, required if not using CMake
+        fbinfer_args: -- make -j 4
+
+        # (Optional) flawfinder args
+        flawfinder_args: --minlevel=1 --context --dataonly --quiet --columns --error-level=2
+
+        # (Optional) flawfinder targets, if you use something other than src and include for implementations and headers, respectively, or if there are additional directories with implementation code and/or headers
+        flawfinder_targets: src include otherSrc otherInclude
 ```
 
 ## Inputs
 
 | Name                    | Description                        | Default value |
 |-------------------------|------------------------------------|---------------|
-| `github_token`          | Github token used for Github API requests |`${{github.token}}`|
-| `pr_num`                | Pull request number for which the comment will be created |`${{github.event.pull_request.number}}`|
+| `github_token`          | Github token used for Github API requests | `${{github.token}}` |
+| `pr_num`                | Pull request number for which the comment will be created | `${{github.event.pull_request.number}}` |
 | `comment_title`         | Title for comment with the raport. This should be an unique name | `Static analysis result` |
 | `exclude_dir`           | Directory which should be excluded from the raport | `<empty>` |
 | `apt_pckgs`             | Additional (space separated) packages that need to be installed in order for project to compile | `<empty>` |
 | `init_script`           | Optional shell script that will be run before configuring project (i.e. running CMake command). This should be used, when the project requires some environmental set-up beforehand. Script will be run with 2 arguments: `root_dir`(root directory of user's code) and `build_dir`(build directory created for running SA). Note. `apt_pckgs` will run before this script, just in case you need some packages installed. Also this script will be run in the root of the project (`root_dir`) | `<empty>` |
-| `cppcheck_args`         | Cppcheck (space separated) arguments that will be used |`--enable=all --suppress=missingIncludeSystem --inline-suppr --inconclusive`|
-| `clang_tidy_args`       | clang-tidy arguments that will be used (example: `-checks='*,fuchsia-*,google-*,zircon-*'` |`<empty>`|
-| `report_pr_changes_only`| Only post the issues found within the changes introduced in this Pull Request. This means that only the issues found within the changed lines will po posted. Any other issues caused by these changes in the repository, won't be reported, so in general you should run static analysis on entire code base  |`false`|
+| `cppcheck_args`         | Cppcheck (space separated) arguments that will be used | `--enable=all --suppress=missingIncludeSystem --inline-suppr --inconclusive` |
+| `clang_tidy_args`       | clang-tidy arguments that will be used (example: `-checks='*,fuchsia-*,google-*,zircon-*'`) | `<empty>` |
+| `fbinfer_args`          | FB Infer arguments that will be used, if you don't use CMake, use this to specify the build system (example: `-- make -j 4`) | `<empty>` |
+| `flawfinder_args`       | flawfinder arguments that will be used (example: `--minlevel=0 --html --html-title="ProjectX Flawfinder Report" --columns`) | `--minlevel=0 --context --dataonly --quiet --columns --error-level=0` |
+| `flawfinder_targets`    | Directories with implementation and/or header files that will be analyzed with flawfinder | `src include` |
+| `report_pr_changes_only`| Only post the issues found within the changes introduced in this Pull Request. This means that only the issues found within the changed lines will po posted. Any other issues caused by these changes in the repository, won't be reported, so in general you should run static analysis on entire code base  | `false` |
 | `use_cmake`             | Determines wether CMake should be used to generate compile_commands.json file | `true` |
-| `cmake_args`            | Additional CMake arguments |`<empty>`|
-| `force_console_print`   | Output the action result to console, instead of creating the comment |`false`|
+| `cmake_args`            | Additional CMake arguments | `<empty>` |
+| `force_console_print`   | Output the action result to console, instead of creating the comment | `false` |
 
 **NOTE: `apt_pckgs` will run before `init_script`, just in case you need some packages installed before running the script**
 
@@ -147,7 +166,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: CodeQuality
-        uses: JacobDomagala/StaticAnalysis@main
+        uses: eljonny/StaticAnalysis-MoreCPP@morecpp-latest
         with:
           language: "Python"
           pylint_args: "--rcfile=.pylintrc --recursive=true"

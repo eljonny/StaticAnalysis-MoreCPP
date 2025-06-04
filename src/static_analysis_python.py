@@ -4,7 +4,6 @@ import json
 
 from src import sa_utils as utils
 
-
 def parse_pylint_json(
     pylint_json_in, output_to_console, common_ancestor, feature_branch
 ):
