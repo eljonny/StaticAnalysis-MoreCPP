@@ -1,0 +1,210 @@
+{
+  "$schema": "https:\/\/docs.oasis-open.org\/sarif\/sarif\/v2.1.0\/errata01\/os\/schemas\/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type4.h"
+                },
+                "region": {
+                  "endColumn": 9,
+                  "endLine": 80,
+                  "startColumn": 9,
+                  "startLine": 80
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Member variable 'Type4::member1' is not initialized in the constructor."
+          },
+          "ruleId": "uninitMemberVar"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type4.h"
+                },
+                "region": {
+                  "endColumn": 9,
+                  "endLine": 80,
+                  "startColumn": 9,
+                  "startLine": 80
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Member variable 'Type4::member2' is not initialized in the constructor."
+          },
+          "ruleId": "uninitMemberVar"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type4.h"
+                },
+                "region": {
+                  "endColumn": 9,
+                  "endLine": 80,
+                  "startColumn": 9,
+                  "startLine": 80
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Member variable 'Type4::member3' is not initialized in the constructor."
+          },
+          "ruleId": "uninitMemberVar"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type4.h"
+                },
+                "region": {
+                  "endColumn": 9,
+                  "endLine": 80,
+                  "startColumn": 9,
+                  "startLine": 80
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Member variable 'Type4::member4' is not initialized in the constructor."
+          },
+          "ruleId": "uninitMemberVar"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type4.h"
+                },
+                "region": {
+                  "endColumn": 16,
+                  "endLine": 117,
+                  "startColumn": 16,
+                  "startLine": 117
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'project::Type4::fn1' can be static (but you may consider moving to unnamed namespace)."
+          },
+          "ruleId": "functionStatic"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type4.cpp"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 73,
+                  "startColumn": 25,
+                  "startLine": 73
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type4.h"
+                },
+                "region": {
+                  "endColumn": 18,
+                  "endLine": 153,
+                  "startColumn": 18,
+                  "startLine": 153
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'project::Type4::fn2' can be const."
+          },
+          "ruleId": "functionConst"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "informationUri": "https:\/\/cppcheck.sourceforge.io",
+          "name": "Cppcheck",
+          "rules": [
+            {
+              "fullDescription": {
+                "text": "Member variable 'Type4::member1' is not initialized in the constructor. Member variables of native types, pointers, or references are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior."
+              },
+              "help": {
+                "text": "Member variable 'Type4::member1' is not initialized in the constructor. Member variables of native types, pointers, or references are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior."
+              },
+              "id": "uninitMemberVar",
+              "properties": {
+                "precision": "high"
+              },
+              "shortDescription": {
+                "text": "Member variable 'Type4::member1' is not initialized in the constructor."
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "The member function 'project::Type4::fn1' can be made a static function. Making a function static can bring a performance benefit since no 'this' instance is passed to the function. This change should not cause compiler errors but it does not necessarily make sense conceptually. Think about your design and the task of the function first - is it a function that must not access members of class instances? And maybe it is more appropriate to move this function to an unnamed namespace."
+              },
+              "help": {
+                "text": "The member function 'project::Type4::fn1' can be made a static function. Making a function static can bring a performance benefit since no 'this' instance is passed to the function. This change should not cause compiler errors but it does not necessarily make sense conceptually. Think about your design and the task of the function first - is it a function that must not access members of class instances? And maybe it is more appropriate to move this function to an unnamed namespace."
+              },
+              "id": "functionStatic",
+              "properties": {
+                "precision": "medium"
+              },
+              "shortDescription": {
+                "text": "Technically the member function 'project::Type4::fn1' can be static (but you may consider moving to unnamed namespace)."
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "The member function 'project::Type4::fn2' can be made a const function. Making this function 'const' should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?"
+              },
+              "help": {
+                "text": "The member function 'project::Type4::fn2' can be made a const function. Making this function 'const' should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?"
+              },
+              "id": "functionConst",
+              "properties": {
+                "precision": "medium"
+              },
+              "shortDescription": {
+                "text": "Technically the member function 'project::Type4::fn2' can be const."
+              }
+            }
+          ],
+          "semanticVersion": "2.18"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}
+

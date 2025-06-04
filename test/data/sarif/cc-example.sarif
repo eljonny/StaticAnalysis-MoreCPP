@@ -1,0 +1,975 @@
+{
+  "$schema": "https:\/\/docs.oasis-open.org\/sarif\/sarif\/v2.1.0\/errata01\/os\/schemas\/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPAssertions.h"
+                },
+                "region": {
+                  "endColumn": 24,
+                  "endLine": 78,
+                  "startColumn": 24,
+                  "startLine": 78
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'failureMessage' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPAssertions.h"
+                },
+                "region": {
+                  "endColumn": 24,
+                  "endLine": 109,
+                  "startColumn": 24,
+                  "startLine": 109
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'failureMessage' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPAssertions.h"
+                },
+                "region": {
+                  "endColumn": 24,
+                  "endLine": 136,
+                  "startColumn": 24,
+                  "startLine": 136
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'failureMessage' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPAssertions.h"
+                },
+                "region": {
+                  "endColumn": 24,
+                  "endLine": 163,
+                  "startColumn": 24,
+                  "startLine": 163
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'failureMessage' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPAssertions.cpp"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 92,
+                  "startColumn": 20,
+                  "startLine": 92
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'failureMessage' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPAssertions.cpp"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 107,
+                  "startColumn": 20,
+                  "startLine": 107
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'failureMessage' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 461,
+                  "startColumn": 20,
+                  "startLine": 461
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestCase.h"
+                },
+                "region": {
+                  "endColumn": 14,
+                  "endLine": 199,
+                  "startColumn": 14,
+                  "startLine": 199
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'TestCPP::TestCase::clearStdoutCapture' can be static (but you may consider moving to unnamed namespace)."
+          },
+          "ruleId": "functionStatic"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 467,
+                  "startColumn": 20,
+                  "startLine": 467
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestCase.h"
+                },
+                "region": {
+                  "endColumn": 14,
+                  "endLine": 207,
+                  "startColumn": 14,
+                  "startLine": 207
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'TestCPP::TestCase::clearLogCapture' can be static (but you may consider moving to unnamed namespace)."
+          },
+          "ruleId": "functionStatic"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 473,
+                  "startColumn": 20,
+                  "startLine": 473
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestCase.h"
+                },
+                "region": {
+                  "endColumn": 14,
+                  "endLine": 215,
+                  "startColumn": 14,
+                  "startLine": 215
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'TestCPP::TestCase::clearStderrCapture' can be static (but you may consider moving to unnamed namespace)."
+          },
+          "ruleId": "functionStatic"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 292,
+                  "startColumn": 20,
+                  "startLine": 292
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestCase.h"
+                },
+                "region": {
+                  "endColumn": 14,
+                  "endLine": 292,
+                  "startColumn": 14,
+                  "startLine": 292
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'TestCPP::TestCase::logFailure' can be const."
+          },
+          "ruleId": "functionConst"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 15,
+                  "endLine": 171,
+                  "startColumn": 15,
+                  "startLine": 171
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Exception thrown in function declared not to throw exceptions."
+          },
+          "ruleId": "throwInNoexceptFunction"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 15,
+                  "endLine": 262,
+                  "startColumn": 15,
+                  "startLine": 262
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Exception thrown in function declared not to throw exceptions."
+          },
+          "ruleId": "throwInNoexceptFunction"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestCase.h"
+                },
+                "region": {
+                  "endColumn": 27,
+                  "endLine": 132,
+                  "startColumn": 27,
+                  "startLine": 132
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 39,
+                  "endLine": 114,
+                  "startColumn": 39,
+                  "startLine": 114
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function 'TestCase' argument 1 names different: declaration 'testName' definition 'name'."
+          },
+          "ruleId": "funcArgNamesDifferent"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestCase.h"
+                },
+                "region": {
+                  "endColumn": 30,
+                  "endLine": 133,
+                  "startColumn": 30,
+                  "startLine": 133
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 42,
+                  "endLine": 115,
+                  "startColumn": 42,
+                  "startLine": 115
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function 'TestCase' argument 2 names different: declaration 'test' definition 'testFn'."
+          },
+          "ruleId": "funcArgNamesDifferent"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestCase.h"
+                },
+                "region": {
+                  "endColumn": 18,
+                  "endLine": 134,
+                  "startColumn": 18,
+                  "startLine": 134
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 30,
+                  "endLine": 116,
+                  "startColumn": 30,
+                  "startLine": 116
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function 'TestCase' argument 3 names different: declaration 'testPassedMessage' definition 'msg'."
+          },
+          "ruleId": "funcArgNamesDifferent"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestCase.h"
+                },
+                "region": {
+                  "endColumn": 37,
+                  "endLine": 299,
+                  "startColumn": 37,
+                  "startLine": 299
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 43,
+                  "endLine": 304,
+                  "startColumn": 43,
+                  "startLine": 304
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function 'logTestFailure' argument 1 names different: declaration 'failureMessage' definition 'reason'."
+          },
+          "ruleId": "funcArgNamesDifferent"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestCase.h"
+                },
+                "region": {
+                  "endColumn": 36,
+                  "endLine": 180,
+                  "startColumn": 36,
+                  "startLine": 180
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 42,
+                  "endLine": 371,
+                  "startColumn": 42,
+                  "startLine": 371
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function 'setNotifyPassed' argument 1 names different: declaration 'shouldNotify' definition 'notify'."
+          },
+          "ruleId": "funcArgNamesDifferent"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 40,
+                  "endLine": 479,
+                  "startColumn": 40,
+                  "startLine": 479
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'against' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 37,
+                  "endLine": 484,
+                  "startColumn": 37,
+                  "startLine": 484
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'against' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 40,
+                  "endLine": 489,
+                  "startColumn": 40,
+                  "startLine": 489
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'against' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 40,
+                  "endLine": 494,
+                  "startColumn": 40,
+                  "startLine": 494
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'source' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 55,
+                  "endLine": 494,
+                  "startColumn": 55,
+                  "startLine": 494
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'against' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 35,
+                  "endLine": 145,
+                  "startColumn": 35,
+                  "startLine": 145
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Parameter 'o' can be declared as reference to const"
+          },
+          "ruleId": "constParameterReference"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 46,
+                  "endLine": 234,
+                  "startColumn": 46,
+                  "startLine": 234
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Parameter 'rhs' can be declared as reference to const"
+          },
+          "ruleId": "constParameterReference"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestCase.cpp"
+                },
+                "region": {
+                  "endColumn": 53,
+                  "endLine": 292,
+                  "startColumn": 53,
+                  "startLine": 292
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Parameter 'reason' can be declared as reference to const"
+          },
+          "ruleId": "constParameterReference"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestSuite.h"
+                },
+                "region": {
+                  "endColumn": 9,
+                  "endLine": 80,
+                  "startColumn": 9,
+                  "startLine": 80
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Member variable 'TestSuite::lastRunSucceeded' is not initialized in the constructor."
+          },
+          "ruleId": "uninitMemberVar"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestSuite.h"
+                },
+                "region": {
+                  "endColumn": 9,
+                  "endLine": 80,
+                  "startColumn": 9,
+                  "startLine": 80
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Member variable 'TestSuite::lastRunSuccessCount' is not initialized in the constructor."
+          },
+          "ruleId": "uninitMemberVar"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestSuite.h"
+                },
+                "region": {
+                  "endColumn": 9,
+                  "endLine": 80,
+                  "startColumn": 9,
+                  "startLine": 80
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Member variable 'TestSuite::lastRunFailCount' is not initialized in the constructor."
+          },
+          "ruleId": "uninitMemberVar"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestSuite.h"
+                },
+                "region": {
+                  "endColumn": 9,
+                  "endLine": 80,
+                  "startColumn": 9,
+                  "startLine": 80
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Member variable 'TestSuite::totalRuntime' is not initialized in the constructor."
+          },
+          "ruleId": "uninitMemberVar"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestSuite.h"
+                },
+                "region": {
+                  "endColumn": 16,
+                  "endLine": 117,
+                  "startColumn": 16,
+                  "startLine": 117
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'TestCPP::TestSuite::addTests' can be static (but you may consider moving to unnamed namespace)."
+          },
+          "ruleId": "functionStatic"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPTestSuite.cpp"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 73,
+                  "startColumn": 25,
+                  "startLine": 73
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPTestSuite.h"
+                },
+                "region": {
+                  "endColumn": 18,
+                  "endLine": 153,
+                  "startColumn": 18,
+                  "startLine": 153
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'TestCPP::TestSuite::getLastRunFailCount' can be const."
+          },
+          "ruleId": "functionConst"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\/TestCPPUtil.cpp"
+                },
+                "region": {
+                  "endColumn": 32,
+                  "endLine": 59,
+                  "startColumn": 32,
+                  "startLine": 59
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "include\/internal\/TestCPPUtil.h"
+                },
+                "region": {
+                  "endColumn": 23,
+                  "endLine": 81,
+                  "startColumn": 23,
+                  "startLine": 81
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Technically the member function 'TestCPP::TestObjName::getName' can be const."
+          },
+          "ruleId": "functionConst"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "informationUri": "https:\/\/cppcheck.sourceforge.io",
+          "name": "Cppcheck",
+          "rules": [
+            {
+              "fullDescription": {
+                "text": "Parameter 'failureMessage' is passed by value. It could be passed as a const reference which is usually faster and recommended in C++."
+              },
+              "help": {
+                "text": "Parameter 'failureMessage' is passed by value. It could be passed as a const reference which is usually faster and recommended in C++."
+              },
+              "id": "passedByValue",
+              "properties": {
+                "precision": "high"
+              },
+              "shortDescription": {
+                "text": "Function parameter 'failureMessage' should be passed by const reference."
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "The member function 'TestCPP::TestCase::clearStdoutCapture' can be made a static function. Making a function static can bring a performance benefit since no 'this' instance is passed to the function. This change should not cause compiler errors but it does not necessarily make sense conceptually. Think about your design and the task of the function first - is it a function that must not access members of class instances? And maybe it is more appropriate to move this function to an unnamed namespace."
+              },
+              "help": {
+                "text": "The member function 'TestCPP::TestCase::clearStdoutCapture' can be made a static function. Making a function static can bring a performance benefit since no 'this' instance is passed to the function. This change should not cause compiler errors but it does not necessarily make sense conceptually. Think about your design and the task of the function first - is it a function that must not access members of class instances? And maybe it is more appropriate to move this function to an unnamed namespace."
+              },
+              "id": "functionStatic",
+              "properties": {
+                "precision": "medium"
+              },
+              "shortDescription": {
+                "text": "Technically the member function 'TestCPP::TestCase::clearStdoutCapture' can be static (but you may consider moving to unnamed namespace)."
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "The member function 'TestCPP::TestCase::logFailure' can be made a const function. Making this function 'const' should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?"
+              },
+              "help": {
+                "text": "The member function 'TestCPP::TestCase::logFailure' can be made a const function. Making this function 'const' should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?"
+              },
+              "id": "functionConst",
+              "properties": {
+                "precision": "medium"
+              },
+              "shortDescription": {
+                "text": "Technically the member function 'TestCPP::TestCase::logFailure' can be const."
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "Exception thrown in function declared not to throw exceptions."
+              },
+              "help": {
+                "text": "Exception thrown in function declared not to throw exceptions."
+              },
+              "id": "throwInNoexceptFunction",
+              "properties": {
+                "precision": "high",
+                "security-severity": 9.9000000000000004,
+                "tags": [
+                  "security"
+                ]
+              },
+              "shortDescription": {
+                "text": "Exception thrown in function declared not to throw exceptions."
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "Function 'TestCase' argument 1 names different: declaration 'testName' definition 'name'."
+              },
+              "help": {
+                "text": "Function 'TestCase' argument 1 names different: declaration 'testName' definition 'name'."
+              },
+              "id": "funcArgNamesDifferent",
+              "properties": {
+                "precision": "medium"
+              },
+              "shortDescription": {
+                "text": "Function 'TestCase' argument 1 names different: declaration 'testName' definition 'name'."
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "Parameter 'o' can be declared as reference to const"
+              },
+              "help": {
+                "text": "Parameter 'o' can be declared as reference to const"
+              },
+              "id": "constParameterReference",
+              "properties": {
+                "precision": "high"
+              },
+              "shortDescription": {
+                "text": "Parameter 'o' can be declared as reference to const"
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "Member variable 'TestSuite::lastRunSucceeded' is not initialized in the constructor. Member variables of native types, pointers, or references are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior."
+              },
+              "help": {
+                "text": "Member variable 'TestSuite::lastRunSucceeded' is not initialized in the constructor. Member variables of native types, pointers, or references are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior."
+              },
+              "id": "uninitMemberVar",
+              "properties": {
+                "precision": "high"
+              },
+              "shortDescription": {
+                "text": "Member variable 'TestSuite::lastRunSucceeded' is not initialized in the constructor."
+              }
+            }
+          ],
+          "semanticVersion": "2.18"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

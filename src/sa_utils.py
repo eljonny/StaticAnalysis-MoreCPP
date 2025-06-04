@@ -24,7 +24,7 @@ MAX_CHAR_COUNT_REACHED = (
     "!Maximum character count per GitHub comment has been reached!"
     " Not all warnings/errors has been parsed!"
 )
-COMMENT_MAX_SIZE = 65000
+COMMENT_MAX_SIZE = 64984
 CURRENT_COMMENT_LENGTH = 0
 
 
@@ -224,7 +224,7 @@ def is_excluded_dir(line):
     if not exclude_dir:
         return False
 
-    excluded_dir = f"{WORK_DIR}/{exclude_dir}"
+    excluded_dir = f"{os.getenv("GITHUB_WORKSPACE")}{os.sep}{exclude_dir}"
     debug_print(
         f"{line} and {excluded_dir} with result {line.startswith(excluded_dir)}"
     )
@@ -245,7 +245,7 @@ def get_file_line_end(file_in, file_line_start_in):
         or the total number of lines in the file, whichever is smaller.
     """
 
-    with open(f"{WORK_DIR}/{file_in}", encoding="utf-8") as file:
+    with open(f"{os.getenv("GITHUB_WORKSPACE")}{os.sep}{file_in}", encoding="utf-8") as file:
         num_lines = sum(1 for line in file)
 
     return min(file_line_start_in + 5, num_lines)
@@ -285,37 +285,39 @@ def generate_description(
 
     return output_string, description
 
+def generate_desc_from_sarif(
+    is_note, was_note, file_line_start, issue_description, output_string
+):
+    """Generate description for an issue
 
-def create_or_edit_comment(comment_body):
+    is_note -- is the current issue a Note: or not
+    was_note -- was the previous issue a Note: or not
+    file_line_start -- line to which the issue corresponds
+    issue_description -- the description from cppcheck/clang-tidy
+    output_string -- entire description (can be altered if the current/previous issue is/was Note:)
     """
-    Creates or edits a comment on a pull request with the given comment body.
+    global CURRENT_COMMENT_LENGTH
 
-    Args:
-    - comment_body: A string containing the full comment body to be created or edited.
-
-    Returns:
-    - None.
-    """
-
-    github = Github(GITHUB_TOKEN)
-    repo = github.get_repo(TARGET_REPO_NAME)
-    pull_request = repo.get_pull(int(PR_NUM))
-
-    comments = pull_request.get_issue_comments()
-    found_id = -1
-    comment_to_edit = None
-    for comment in comments:
-        if (comment.user.login == "github-actions[bot]") and (
-            COMMENT_TITLE in comment.body
-        ):
-            found_id = comment.id
-            comment_to_edit = comment
-            break
-
-    if found_id != -1 and comment_to_edit:
-        comment_to_edit.edit(body=comment_body)
+    if not is_note:
+        description = (
+            f"\n```diff\n!Line: {file_line_start} - {issue_description}\n``` \n"
+        )
     else:
-        pull_request.create_issue_comment(body=comment_body)
+        if not was_note:
+            # Previous line consists of ```diff <content> ```, so remove the closing ```
+            # and append the <content> with Note: ...`
+
+            # 12 here means "``` \n<br>\n"`
+            num_chars_to_remove = 12
+        else:
+            # Previous line is Note: so it ends with "``` \n"
+            num_chars_to_remove = 6
+
+        output_string = output_string[:-num_chars_to_remove]
+        CURRENT_COMMENT_LENGTH -= num_chars_to_remove
+        description = f"\n!Line: {file_line_start} - {issue_description}``` \n"
+
+    return output_string, description
 
 
 def generate_output(
@@ -355,7 +357,81 @@ def generate_output(
         if TARGET_REPO_NAME != REPO_NAME:
             if file_path not in FILES_WITH_ISSUES:
                 try:
-                    with open(f"{prefix}/{file_path}", encoding="utf-8") as file:
+                    with open(f"{prefix}{os.sep}{file_path}", encoding="utf-8") as file:
+                        lines = file.readlines()
+                        FILES_WITH_ISSUES[file_path] = lines
+                except FileNotFoundError:
+                    print(f"Error: The file '{prefix}/{file_path}' was not found.")
+
+            modified_content = FILES_WITH_ISSUES[file_path][
+                file_line_start - 1 : file_line_end - 1
+            ]
+
+            debug_print(
+                f"generate_output for following file: \nfile_path={file_path} \nmodified_content={modified_content}\n"
+            )
+
+            modified_content[0] = modified_content[0][:-1] + " <---- HERE\n"
+            file_content = "".join(modified_content)
+
+            file_url = f"https://github.com/{REPO_NAME}/blob/{SHA}/{file_path}#L{file_line_start}"
+            new_line = (
+                "\n\n------"
+                f"\n\n <b><i>Issue found in file</b></i> [{REPO_NAME}/{file_path}]({file_url})\n"
+                f"```{LANG}\n"
+                f"{file_content}"
+                f"\n``` \n"
+                f"{description} <br>\n"
+            )
+
+        else:
+            new_line = (
+                f"\n\nhttps://github.com/{REPO_NAME}/blob/{SHA}/{file_path}"
+                f"#L{file_line_start}-L{file_line_end} {description} <br>\n"
+            )
+    else:
+        new_line = description
+
+    return new_line
+
+def generate_outp_from_sarif(
+    is_note, prefix_and_file_path, file_line_start, file_line_end, description
+):
+    """
+    Generate a formatted output string based on the details of a code issue.
+
+    This function takes information about a code issue and constructs a string that
+    includes details such as the location of the issue in the codebase, the affected code
+    lines, and a description of the issue. If the issue is a note, only the description
+    is returned. If the issue occurs in a different repository than the target, it
+    also fetches the lines where the issue was detected.
+
+    Parameters:
+    - is_note (bool): Whether the issue is just a note or a code issue.
+    - file_path (str): Path to the file where the issue was detected.
+    - file_line_start (int): The line number in the file where the issue starts.
+    - file_line_end (int): The line number in the file where the issue ends.
+    - description (str): Description of the issue.
+
+    Returns:
+    - str: Formatted string with details of the issue.
+
+    Note:
+    - This function relies on several global variables like TARGET_REPO_NAME, REPO_NAME,
+      FILES_WITH_ISSUES, and SHA which should be set before calling this function.
+    """
+
+    # We assume that the file is not empty!
+    # In case the tool will reffer to line 0 (meaning entire file)
+    file_line_start = max(1, file_line_start)
+    file_line_end = max(1, file_line_end)
+
+    if not is_note:
+        prefix, file_path = prefix_and_file_path
+        if TARGET_REPO_NAME != REPO_NAME:
+            if file_path not in FILES_WITH_ISSUES:
+                try:
+                    with open(f"{prefix}{os.sep}{file_path}", encoding="utf-8") as file:
                         lines = file.readlines()
                         FILES_WITH_ISSUES[file_path] = lines
                 except FileNotFoundError:
@@ -393,6 +469,38 @@ def generate_output(
     return new_line
 
 
+def create_or_edit_comment(comment_body):
+    """
+    Creates or edits a comment on a pull request with the given comment body.
+
+    Args:
+    - comment_body: A string containing the full comment body to be created or edited.
+
+    Returns:
+    - None.
+    """
+
+    github = Github(GITHUB_TOKEN)
+    repo = github.get_repo(TARGET_REPO_NAME)
+    pull_request = repo.get_pull(int(PR_NUM))
+
+    comments = pull_request.get_issue_comments()
+    found_id = -1
+    comment_to_edit = None
+    for comment in comments:
+        if (comment.user.login == "github-actions[bot]") and (
+            COMMENT_TITLE in comment.body
+        ):
+            found_id = comment.id
+            comment_to_edit = comment
+            break
+
+    if found_id != -1 and comment_to_edit:
+        comment_to_edit.edit(body=comment_body)
+    else:
+        pull_request.create_issue_comment(body=comment_body)
+
+
 def extract_info(line, prefix):
     """
     Extracts information from a given line containing file path, line number, and issue description.
@@ -413,7 +521,7 @@ def extract_info(line, prefix):
     """
 
     # Clean up line
-    line = line.replace(prefix, "").lstrip("/")
+    line = line.replace(prefix, "").lstrip(os.sep)
 
     # Get the line starting position /path/to/file:line and trim it
     file_path_end_idx = line.index(":")

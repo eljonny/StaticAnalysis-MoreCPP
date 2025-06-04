@@ -1,4 +1,7 @@
 import argparse
+import os
+import re
+
 from pathlib import Path
 
 
@@ -18,12 +21,20 @@ def get_files_to_check(directory_in, excludes_in, preselected_files, lang):
         str: A space-separated string of file paths that meet the search criteria.
     """
 
-    exclude_prefixes = [f"{directory_in}/build"]
+    if os.sep.__eq__("\\"):
+        directory_in = str(directory_in).replace("/", os.sep)
+    else:
+        directory_in = str(directory_in).replace("\\", os.sep)
+
+    dirin = f"{directory_in}{os.sep}build"
+    while not dirin.find(f"{os.sep}{os.sep}") == -1:
+        dirin = dirin.replace(f"{os.sep}{os.sep}", f"{os.sep}")
+    exclude_prefixes = [re.escape(str(dirin))]
 
     if excludes_in is not None:
         excludes_list = excludes_in.split(" ")
         for exclude in excludes_list:
-            exclude_prefixes.append(str(exclude))
+            exclude_prefixes.append(re.escape(str(exclude)))
 
     if lang == "c++":
         supported_extensions = (".h", ".hpp", ".hcc", ".c", ".cc", ".cpp", ".cxx")
@@ -35,12 +46,15 @@ def get_files_to_check(directory_in, excludes_in, preselected_files, lang):
     all_files = []
 
     if len(preselected_files) == 0:
+        print(f"Compiling regex for exclude prefixes: {exclude_prefixes}")
+        regex_exclude = re.compile(f"{"|".join(exclude_prefixes)}")
         for path in Path(directory_in).rglob("*.*"):
-            path_ = str(path.resolve())
-            if path_.endswith(supported_extensions) and not path_.startswith(
-                tuple(exclude_prefixes)
-            ):
-                all_files.append(path_)
+            if not regex_exclude.search(str(path)):
+                path_ = str(path.resolve())
+                if path_.endswith(supported_extensions) and not path_.startswith(
+                    tuple(exclude_prefixes)
+                ):
+                    all_files.append(path_)
     else:
         for file in preselected_files:
             if not file.startswith(directory_in):
@@ -60,7 +74,9 @@ if __name__ == "__main__":
     parser.add_argument("-dir", help="Source directory", required=True)
     parser.add_argument("-lang", help="Programming language", required=True)
 
-    directory = parser.parse_args().dir
+    directory = str(parser.parse_args().dir).replace("//", "/")
+    while not directory.find("//") == -1:
+        directory = str(parser.parse_args().dir).replace("//", "/")
     preselected = parser.parse_args().preselected
     excludes = parser.parse_args().exclude
     language = parser.parse_args().lang

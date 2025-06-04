@@ -1,4 +1,4 @@
-name: Linter
+name: StaticAnalysis-MoreCPP Project Code Linting and Style Checks
 
 on:
   push:

@@ -1,0 +1,167 @@
+{
+  "$schema": "https:\/\/docs.oasis-open.org\/sarif\/sarif\/v2.1.0\/errata01\/os\/schemas\/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type1.h"
+                },
+                "region": {
+                  "endColumn": 24,
+                  "endLine": 78,
+                  "startColumn": 24,
+                  "startLine": 78
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'failureMessage' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type1.h"
+                },
+                "region": {
+                  "endColumn": 24,
+                  "endLine": 109,
+                  "startColumn": 24,
+                  "startLine": 109
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'failureMessage' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type1.h"
+                },
+                "region": {
+                  "endColumn": 24,
+                  "endLine": 136,
+                  "startColumn": 24,
+                  "startLine": 136
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'failureMessage' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/include\/internal\/Type1.h"
+                },
+                "region": {
+                  "endColumn": 24,
+                  "endLine": 163,
+                  "startColumn": 24,
+                  "startLine": 163
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'failureMessage' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type1.cpp"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 92,
+                  "startColumn": 20,
+                  "startLine": 92
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'failureMessage' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "\/mnt\/c\/code\/project\/src\/Type1.cpp"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 107,
+                  "startColumn": 20,
+                  "startLine": 107
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function parameter 'failureMessage' should be passed by const reference."
+          },
+          "ruleId": "passedByValue"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "informationUri": "https:\/\/cppcheck.sourceforge.io",
+          "name": "Cppcheck",
+          "rules": [
+            {
+              "fullDescription": {
+                "text": "Parameter 'failureMessage' is passed by value. It could be passed as a const reference which is usually faster and recommended in C++."
+              },
+              "help": {
+                "text": "Parameter 'failureMessage' is passed by value. It could be passed as a const reference which is usually faster and recommended in C++."
+              },
+              "id": "passedByValue",
+              "properties": {
+                "precision": "high"
+              },
+              "shortDescription": {
+                "text": "Function parameter 'failureMessage' should be passed by const reference."
+              }
+            }
+          ],
+          "semanticVersion": "2.18"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}
+

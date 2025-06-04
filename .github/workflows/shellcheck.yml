@@ -1,4 +1,4 @@
-name: "Shellcheck"
+name: "StaticAnalysis-MoreCPP Shellcheck"
 
 on:
   push:

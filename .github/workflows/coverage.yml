@@ -1,0 +1,41 @@
+name: StaticAnalysis-MoreCPP Coverage and Test Results Upload
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check:
+    name: Run Unit Tests with Coverage, with CodeCov for coverage and test results upload
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.13.0
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest PyGithub
+      - name: Test with coverage
+        run: |
+          pytest --cov-report xml:coverage.xml
+      - name: Test with analysis
+        run: |
+          pytest --cov --junitxml=junit.xml -o junit_family=legacy
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5.3.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: eljonny/StaticAnalysis-MoreCPP
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

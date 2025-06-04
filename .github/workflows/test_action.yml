@@ -1,5 +1,4 @@
-==== BASE ====
-name: Test Action
+name: StaticAnalysis-MoreCPP Test GitHub Action
 
 on:
   push:
@@ -34,7 +33,7 @@ jobs:
             BRANCH_NAME=${GITHUB_HEAD_REF}
           fi
 
-          git clone "https://${{secrets.TOKEN}}@github.com/eljonny/StaticAnalysisTestRepo.git"
+          git clone "https://${{secrets.TOKEN}}@github.com/eljonnyTest/StaticAnalysisTestRepo.git"
           cd StaticAnalysisTestRepo
           python ./switch_sa_branch.py -br=$BRANCH_NAME
           git diff --quiet && git diff --staged --quiet || git commit -am"Update branch name: ($BRANCH_NAME)"
