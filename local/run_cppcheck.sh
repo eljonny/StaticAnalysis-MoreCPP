@@ -10,7 +10,7 @@ CPPCHECK_ARGS="$4"
 
 echo "Running $RUN_FINDFILES_SCRIPT on $SRC_DIR with the following exclusions: $EXCLUDES"
 
-files_to_check=$(python3 $RUN_FINDFILES_SCRIPT -exclude="$EXCLUDES" -dir="$SRC_DIR" -lang="c++")
+files_to_check=$(python3 "$RUN_FINDFILES_SCRIPT" -exclude="$EXCLUDES" -dir="$SRC_DIR" -lang="c++")
 
 for file in $files_to_check; do
     file_extension="${file##*.}"
