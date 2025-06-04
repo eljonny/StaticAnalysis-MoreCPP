@@ -1,6 +1,9 @@
-[![Linter](https://github.com/eljonny/StaticAnalysis/actions/workflows/linter.yml/badge.svg?branch=main)](https://github.com/eljonny/StaticAnalysis/actions/workflows/linter.yml?query=branch%3Amain)
-[![Test Action](https://github.com/eljonny/StaticAnalysis/actions/workflows/test_action.yml/badge.svg?branch=main)](https://github.com/eljonny/StaticAnalysis/actions/workflows/test_action.yml?query=branch%3Amain)
-[![Unit Tests](https://github.com/eljonny/StaticAnalysis/actions/workflows/unit_tests.yml/badge.svg?branch=main)](https://github.com/eljonny/StaticAnalysis/actions/workflows/unit_tests.yml?query=branch%3Amain)
+[![Linter](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/linter.yml/badge.svg?branch=main)](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/linter.yml?query=branch%3Amain)
+[![Test Action](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/test_action.yml/badge.svg?branch=main)](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/test_action.yml?query=branch%3Amain)
+[![Unit Tests](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/unit_tests.yml/badge.svg?branch=main)](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/unit_tests.yml?query=branch%3Amain)
+[![Shell Script Check](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/shellcheck.yml/badge.svg?branch=main)](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/shellcheck.yml?query=branch%3Amain)
+[![Code Coverage](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/coverage.yml/badge.svg?branch=main)](https://github.com/eljonny/StaticAnalysis-MoreCPP/actions/workflows/coverage.yml?query=branch%3Amain)
+[![codecov](https://codecov.io/gh/eljonny/StaticAnalysis-MoreCPP/graph/badge.svg?token=QJZvQ3D9aK)](https://codecov.io/gh/eljonny/StaticAnalysis-MoreCPP)
 
 # Static Analysis
 
@@ -15,7 +18,7 @@ This GitHub action is designed for C++/Python projects and performs static analy
 
 It can be triggered by push and pull requests.
 
-For further information and guidance about setup and various inputs, please see sections dedicated to each language ([**C++**](https://github.com/eljonny/StaticAnalysis?tab=readme-ov-file#c) and [**Python**](https://github.com/eljonny/StaticAnalysis?tab=readme-ov-file#python))
+For further information and guidance about setup and various inputs, please see sections dedicated to each language ([**C++**](https://github.com/eljonny/StaticAnalysis-MoreCPP?tab=readme-ov-file#c) and [**Python**](https://github.com/eljonny/StaticAnalysis-MoreCPP?tab=readme-ov-file#python))
 
 ## Pull Request comment
 
@@ -24,20 +27,20 @@ Created comment will contain code snippets with the issue description. When this
 Note that it's possible that the amount of issues detected can make the comment's body to be greater than the GitHub's character limit per PR comment (which is 65536). In that case, the created comment will contain only the issues found up to that point, and the information that the limit of characters was reached.
 
 ## Output example (C++)
-![output](https://github.com/eljonny/StaticAnalysis/wiki/output_example.png)
+![output](https://github.com/JacobDomagala/StaticAnalysis/wiki/output_example.png)
 
 ## Non Pull Request
 
 For non Pull Requests, the output will be printed to GitHub's output console. This behaviour can also be forced via `force_console_print` input.
 
 ## Output example (C++)
-![output](https://github.com/eljonny/StaticAnalysis/wiki/console_output_example.png)
+![output](https://github.com/JacobDomagala/StaticAnalysis/wiki/console_output_example.png)
 
 
 <br><br>
 
 # C++
-While it's recommended that your project is CMake-based, it's not required (see the [**Inputs**](https://github.com/eljonny/StaticAnalysis#inputs) section below). We also recommend using a ```.clang-tidy``` file in your root directory. If your project requires additional packages to be installed, you can use the `apt_pckgs` and/or `init_script` input variables to install them (see the [**Workflow example**](https://github.com/eljonny/StaticAnalysis#workflow-example) or [**Inputs**](https://github.com/eljonny/StaticAnalysis#inputs) sections below). If your repository allows contributions from forks, you must use this Action with the `pull_request_target` trigger event, as the GitHub API won't allow PR comments otherwise.
+While it's recommended that your project is CMake-based, it's not required (see the [**Inputs**](https://github.com/eljonny/StaticAnalysis-MoreCPP#inputs) section below). We also recommend using a ```.clang-tidy``` file in your root directory. If your project requires additional packages to be installed, you can use the `apt_pckgs` and/or `init_script` input variables to install them (see the [**Workflow example**](https://github.com/eljonny/StaticAnalysis-MoreCPP#workflow-example) or [**Inputs**](https://github.com/eljonny/StaticAnalysis-MoreCPP#inputs) sections below). If your repository allows contributions from forks, you must use this Action with the `pull_request_target` trigger event, as the GitHub API won't allow PR comments otherwise.
 
 By default, **cppcheck** runs with the following flags:
 ```--enable=all --suppress=missingIncludeSystem --inline-suppr --inconclusive```
@@ -76,7 +79,7 @@ jobs:
       run: |
         echo "#!/bin/bash
 
-        # Input args provided by StaticAnalysis action
+        # Input args provided by StaticAnalysis-MoreCPP action
         root_dir=\${1}
         build_dir=\${2}
         echo \"Hello from the init script! First arg=\${root_dir} second arg=\${build_dir}\"
@@ -86,7 +89,7 @@ jobs:
         apt install -y libvulkan1 mesa-vulkan-drivers vulkan-utils" > init_script.sh
 
     - name: Run static analysis
-      uses: eljonny/StaticAnalysis@morecpp-latest
+      uses: eljonny/StaticAnalysis-MoreCPP@morecpp-latest
       with:
         language: c++
 
@@ -163,7 +166,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: CodeQuality
-        uses: eljonny/StaticAnalysis@morecpp-latest
+        uses: eljonny/StaticAnalysis-MoreCPP@morecpp-latest
         with:
           language: "Python"
           pylint_args: "--rcfile=.pylintrc --recursive=true"
@@ -186,4 +189,3 @@ jobs:
 | `force_console_print`   | Output the action result to console, instead of creating the comment |`false`|
 
 **NOTE: `apt_pckgs` will run before `init_script`, just in case you need some packages installed before running the script**
-
