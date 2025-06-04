@@ -57,7 +57,7 @@ def genhashes(to_join):
 
             schema_key = "$schema"
             del sarif_json[schema_key]
-            
+
             sarif = SarifLog(**sarif_json)
             for run in sarif.runs:
                 hashes.append(hash(json.dumps(run, sort_keys=True, ensure_ascii=True, default=lambda v: repr(v) + str(hash(v)))))

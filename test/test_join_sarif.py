@@ -37,7 +37,7 @@ class TestJoinSarif(unittest.TestCase):
         for run in joined.runs:
             run_hash = hash(json.dumps(run, sort_keys=True, ensure_ascii=True, default=lambda v: repr(v) + str(hash(v))))
             self.assertIn(run_hash, hashes)
-    
+
     def test_write_joined_sarif(self):
         with tempfile.NamedTemporaryFile("w", delete_on_close=False) as written_file:
             written_file.close()

@@ -217,28 +217,28 @@ def read_files_and_parse_results():
     flawfinder_content = ""
     with open(flawfinder_file_name, "r", encoding="utf-8") as file:
         sarif_json = json.load(file)
-        
+
         schema_key = "$schema"
         del sarif_json[schema_key]
-        
+
         flawfinder_content = SarifLog(**sarif_json).runs[0]
 
     cppcheck_content = ""
     with open(cppcheck_file_name, "r", encoding="utf-8") as file:
         sarif_json = json.load(file)
-        
+
         schema_key = "$schema"
         del sarif_json[schema_key]
-        
+
         cppcheck_content = SarifLog(**sarif_json).runs[0]
 
     fbinfer_content = ""
     with open(fbinfer_file_name, "r", encoding="utf-8") as file:
         sarif_json = json.load(file)
-        
+
         schema_key = "$schema"
         del sarif_json[schema_key]
-        
+
         fbinfer_content = SarifLog(**sarif_json).runs[0]
 
     clang_tidy_content = ""
@@ -321,7 +321,7 @@ def prepare_comment_body(
     Returns:
         str: The final comment body that will be posted as a comment on the pull request.
     """
-    
+
     SEPARATOR = "\n\n\n *** \n"
 
     if flawfinder_issues_found == 0 and cppcheck_issues_found == 0 and \

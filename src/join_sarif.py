@@ -9,18 +9,18 @@ def join_sarif(files):
     for file in files:
         with open(file) as sarif_file:
             sarif_json = json.load(sarif_file)
-            
+
             schema_key = "$schema"
             del sarif_json[schema_key]
 
             if joined == None:
                 joined = SarifLog(**sarif_json)
                 continue
-            
+
             to_join = SarifLog(**sarif_json)
             for run in to_join.runs:
                 joined.runs.append(run)
-    
+
     return joined
 
 def write_joined_sarif(joined_sarif, output_file):
