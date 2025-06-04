@@ -50,8 +50,8 @@ jobs:
           git push -f
 
           # test pull_request_target
-          git clone "https://${{secrets.TOKEN}}@github.com/eljonnyTest/StaticAnalysisTestRepo.git"
-          cd StaticAnalysisTestRepo
+          git clone "https://${{secrets.TOKEN}}@github.com/eljonnyTest/StaticAnalysisTestRepoFork.git"
+          cd StaticAnalysisTestRepoFork
           git checkout test-branch-fork
           git commit -as --amend --no-edit
           git push -f
