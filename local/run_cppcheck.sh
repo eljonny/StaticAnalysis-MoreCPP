@@ -1,3 +1,5 @@
+#!/bin/bash
+
 RUN_FINDFILES_SCRIPT="$1"
 SRC_DIR="$2"
 EXCLUDES="$3"
